@@ -75,8 +75,6 @@ function markMileStone(checkbox, id){
 
 }
 
-
 loadMilestones()
-
 console.log(milestoneData)
-
+// end

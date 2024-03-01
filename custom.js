@@ -1,6 +1,4 @@
-
 let milestoneData = JSON.parse(data).data;
-
 function loadMilestones(){
 
     const milestone = document.querySelector('.milestones');

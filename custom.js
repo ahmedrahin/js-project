@@ -79,5 +79,3 @@ function markMileStone(checkbox, id){
 loadMilestones()
 
 console.log(milestoneData)
-
-//rahin

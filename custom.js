@@ -1,8 +1,6 @@
 let milestoneData = JSON.parse(data).data;
 function loadMilestones(){
-
     const milestone = document.querySelector('.milestones');
-
     milestone.innerHTML = `${milestoneData.map(function (milestone){
         return `<div class="milestone border-b" id="${milestone._id}">
             <div class="flex">

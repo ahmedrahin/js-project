@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        /* Enhanced styles */
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .clock {
+            text-align: center;
+            font-size: 50px;
+            padding: 40px; /* Increased padding */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .date {
+            font-size: 1.4rem;
+            margin-top: 20px; /* Adjusted margin-top */
+        }
+
+        .time {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+        }
+        .m {
+            color: gray;
+            text-shadow: none;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock">
+        <div class="myWatch">
+            <div class="time">
+                <span class="h"></span> <span class="m"></span> <span class="s"></span> <span class="ampm"></span>
+            </div>
+            <div class="date"></div>
+        </div>
+    </div>
+
+    <script>
+        function myTime(){
+            let date = new Date();
+            let hr, min = ( date.getMinutes() < 10 ) ? "0" + date.getMinutes() : date.getMinutes(),
+                sec = ( date.getSeconds() < 10 ) ? "0" + date.getSeconds() : date.getSeconds(),
+                m   = ( date.getHours() >= 12 ) ? "PM" : "AM";
+
+            if( date.getHours() == 0 ){
+                hr = 12;
+            }else if( date.getHours() > 12 ){
+                hr = date.getHours() - 12;
+            }else{
+                hr = date.getHours();
+            }
+
+            let currentTime = hr + ":" + min + ":" + sec;
+            document.getElementsByClassName('h')[0].innerHTML = currentTime;
+            document.getElementsByClassName('m')[0].innerHTML = m;
+
+            let day = date.getDay();
+            let weekDay;
+            switch(day) {
+                case 0:
+                    weekDay = "Sunday";
+                    break;
+                case 1:
+                    weekDay = "Monday";
+                    break;
+                case 2:
+                    weekDay = "Tuesday";
+                    break;
+                case 3:
+                    weekDay = "Wednesday";
+                    break;
+                case 4:
+                    weekDay = "Thursday";
+                    break;
+                case 5:
+                    weekDay = "Friday";
+                    break;
+                case 6:
+                    weekDay = "Saturday";
+                    break;
+            }
+
+            const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+                    
+            document.querySelector('.date').innerHTML = weekDay + ", " + monthNames[date.getMonth()] + " " + date.getDate();
+        }
+        
+        myTime();
+        setInterval(() => {
+            myTime();
+        }, 1000);
+    </script>
+
+</body>
+</html>

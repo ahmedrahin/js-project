@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculatorBody {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 93%;
+            height: 50px;
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: right;
+            padding-right: 17px;
+        }
+
+        input[type="button"] {
+            width: 88%;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0b0b0bd1;
+            cursor: pointer;
+            color: white;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0b0b0be3;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="calculatorBody">
+        <table>
+            <tr>
+                <td colspan="4"><input type="text" id="myResult"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="c" onclick="deleteMe()"></td>
+                <td><input type="button" value="(" onclick="calculator('(')"></td>
+                <td><input type="button" value=")" onclick="calculator(')')"></td>
+                <td><input type="button" value="&times;" onclick="deleteLast()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="7" onclick="calculator('7')"></td>
+                <td><input type="button" value="8" onclick="calculator('8')"></td>
+                <td><input type="button" value="9" onclick="calculator('9')"></td>
+                <td><input type="button" value="+" onclick="calculator('+')"></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="4" onclick="calculator('4')"></td>
+                <td><input type="button" value="5" onclick="calculator('5')"></td>
+                <td><input type="button" value="6" onclick="calculator('6')"></td>
+                <td><input type="button" value="-" onclick="calculator('-')"></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="1" onclick="calculator('1')"></td>
+                <td><input type="button" value="2" onclick="calculator('2')"></td>
+                <td><input type="button" value="3" onclick="calculator('3')"></td>
+                <td><input type="button" value="*" onclick="calculator('*')"></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="0" onclick="calculator('0')"></td>
+                <td><input type="button" value="." onclick="calculator('.')"></td>
+                <td><input type="button" value="/" onclick="calculator('/')"></td>
+                <td><input type="button" value="=" onclick="result()"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <script>
+
+        function deleteMe(){
+            document.getElementById('myResult').value = '';
+        }
+
+        function calculator(newValue){
+            document.getElementById('myResult').value += newValue;
+        }
+
+        function result(){
+            let outPut = document.getElementById('myResult').value;
+            let result = eval(outPut);
+            if(result){
+                document.getElementById('myResult').value = result;
+            }
+        }
+
+        function deleteLast() {
+            let currentValue = document.getElementById('myResult').value;
+            document.getElementById('myResult').value = currentValue.slice(0, -1);
+         }
+
+        
+    </script>
+
+</body>
+</html>
